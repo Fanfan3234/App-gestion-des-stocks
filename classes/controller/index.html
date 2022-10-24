@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="Interface Admin des contacts" />
+	<meta name="author" content="Rocket Team - AFPA Calais" />
+	<title>Gestion des contacts</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+	<link href="css/all.min.css" rel="stylesheet" />
+	<link href="css/styles.css" rel="stylesheet" />
+	<link rel="icon" href="https://www.youtube.com/s/desktop/1fa3f652/img/favicon_32x32.png" sizes="32x32">
+</head>
+
+<body>
+
+	<header class="navbar navbar-dark sticky-top bg-dark flex-sm-nowrap p-0 shadow">
+
+
+		<button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
+			data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+
+		<h1 class="text-light h3 text-center w-100 bg-dark py-2">Gestion des videos</h1>
+	</header>
+
+	<div class="container-fluid">
+		<div class="row">
+			<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light position-fixed collapse">
+				<div class="position-sticky pt-3 sidebar-sticky">
+					<ul class="nav flex-column">
+						<li class="nav-item">
+							<a class="nav-link text-dark active" aria-current="page" href="#" data-source="tab-bord">
+								Tableau de bord </a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-dark" href="#" data-source="liste">
+								<i class="fa-brands fa-youtube"></i> Liste des videos
+							</a>
+
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-dark" href="#" data-source="nouveau">
+								<i class="fa-sharp fa-solid fa-plus"></i> Nouvelle vidéo
+							</a>
+
+						</li>
+					</ul>
+				</div>
+			</nav>
+
+			<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+				<section class="contenu" data-cible="tab-bord">
+					<h2 class="py-4 h1 ">Tableau de bord</h2>
+					<h2>Cet espace est dedié à lister les divers sketchs des inconnus.</h2>
+				</section>
+
+				<section class="contenu" data-cible="liste">
+					<h2>Liste des videos
+					</h2>
+				</section>
+
+
+				<section class="contenu col-12 col-md-6 offset-md-1 mt-5" data-cible="nouveau">
+					<h2 class="h1 text-center">Ajout de video </h2>
+					<form>
+						<div class="mb-3">
+							<label for="miniature" class="form-label">Lien de la miniature :</label>
+							<input type="text" class="form-control" id="miniature" name="miniature" />
+						</div>
+						<div class="mb-3">
+							<label for="nom" class="form-label">Nom :</label>
+							<input type="text" class="form-control" id="nom" name="nom" />
+						</div>
+						<div class="mb-3">
+							<label for="lien" class="form-label">Lien de la video :</label>
+							<input type="text" class="form-control" id="lien" name="lien" />
+						</div>
+						<button type="submit" class="btn btn-primary px-3">Ajouter</button>
+						<button type="reset" class="btn btn-danger  ms-5 px-3">Réinitialiser</button>
+					</form>
+				</section>
+
+
+
+				<section class="contenu col-12 col-md-6 offset-md-1 mt-5" data-cible="modif">
+					<h2 class="h1 text-center">Modification de video </h2>
+					<form>
+						<input type="hidden" name="idModif" id="idModif">
+
+						<div class="mb-3">
+							<label for="miniature" class="form-label">Lien de la nouvelle miniature :</label>
+							<input type="text" class="form-control" id="miniatureModif" name="miniatureModif" />
+						</div>
+						<div class="mb-3">
+							<label for="nom" class="form-label">Nom :</label>
+							<input type="text" class="form-control" id="nomModif" name="nomModif" />
+						</div>
+						<div class="mb-3">
+							<label for="lien" class="form-label">Nouveau lien de la video :</label>
+							<input type="text" class="form-control" id="lienModif" name="lienModif" />
+						</div>
+						<button type="submit" class="btn btn-primary px-3">Modifier</button>
+						<button type="reset" class="btn btn-danger  ms-5 px-3">Réinitialiser</button>
+					</form>
+				</section>
+
+				<section class="position-absolute top-50 end-0 notif"></section>
+			</main>
+		</div>
+	</div>
+
+	<script src="js/jquery-3.6.1.min.js"></script>
+	<script src="js/bootstrap.bundle.min.js"></script>
+	<script src="js/all.min.js"></script>
+	<script type="../back" src="db.json"></script>
+	<script src="js/main.js"></script>
+
+</body>
+
+</html>
