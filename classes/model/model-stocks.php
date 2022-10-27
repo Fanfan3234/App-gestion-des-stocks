@@ -1,38 +1,42 @@
 <?php
 require_once "connexion.php";
-class ModelClient
+class Modelutilisateur
 {
   private $id;
   private $nom;
   private $prenom;
   private $mail;
-  private $pass;
   private $tel;
-  private $adresse;
-  private $ville;
-  private $code_post;
-  private $token;
-  
+  private $role;
+  private $pass;
 
-  public function __construct($id = null, $nom = null, $prenom = null, $mail = null, $pass = null, $tel = null, $adresse = null, $ville = null, $code_post = null, $token = null )
-  {
+
+  public function __construct(
+    $id = null,
+    $nom = null,
+    $prenom = null,
+    $mail = null,
+
+    $tel = null,
+    $role = null,
+    $pass = null
+  ) {
     $this->id = $id;
+
+    $this->role = $role;
+
     $this->nom = $nom;
     $this->prenom = $prenom;
     $this->mail = $mail;
     $this->pass = $pass;
     $this->tel = $tel;
-    $this->adresse = $adresse;
-    $this->ville = $ville;
-    $this->codepost = $code_post;
-    $this->token = $token;
   }
 
-  public function listeClient()
+  public function listeutilisateur()
   {
     $idcon = connexion();
     $requete = $idcon->prepare("
-      SELECT * FROM client
+      SELECT * FROM user
     ");
     $requete->execute();
     return $requete->fetchAll(PDO::FETCH_ASSOC);
@@ -40,29 +44,27 @@ class ModelClient
 
 
 
-  public function ajoutClient($nom, $prenom, $mail, $pass, $tel, $adresse, $ville, $code_post  )
+  public function ajoututilisateur($nom, $prenom, $mail, $pass, $tel, $role)
   {
     $idcon = connexion();
-    $requete = $idcon->prepare("INSERT INTO client VALUES ( null, :nom, :prenom, :mail, :pass, :tel, :adresse, :ville, :code_post, null)");
-    
-    
+    $requete = $idcon->prepare("INSERT INTO user VALUES ( null, :nom, :prenom, :mail, :pass, :tel, :role, )");
+
+
     return $requete->execute([
       ':nom' => $nom,
       ':prenom' => $prenom,
       ':mail' => $mail,
       ': pass' => $pass,
       ':tel' => $tel,
-      ':adresse' => $adresse,
-      ':ville' => $ville,
-      ':code_post' => $code_post,     
+      ':role' => $role,
     ]);
   }
 
-  public function voirClient($id)
+  public function voirutilisateur($id)
   {
     $idcon = connexion();
     $requete = $idcon->prepare("
-      SELECT * FROM client where id=:id;
+      SELECT * FROM user where id=:id;
     ");
     $requete->execute([
       ':id' => $id,
@@ -70,11 +72,11 @@ class ModelClient
     return $requete->fetch(PDO::FETCH_ASSOC);
   }
 
-  public function suppClient($id)
+  public function supputilisateur($id)
   {
     $idcon = connexion();
     $requete = $idcon->prepare("
-      DELETE  FROM client where id= :id;
+      DELETE  FROM user where id= :id;
     ");
     return $requete->execute([
       ':id' => $id,
@@ -83,11 +85,11 @@ class ModelClient
 
 
 
-  public function modifClient($id, $nom, $prenom, $mail, $pass, $tel, $adresse, $ville, $code_post, $token )
+  public function modifutilisateur($id, $nom, $prenom, $mail, $pass, $tel, $role)
   {
     $idcon = connexion();
     $requet = $idcon->prepare("
-      UPDATE client SET nom = :nom, prenom = :prenom, mail = :mail, pass = :pass, tel = :tel, adresse = :adresse, ville = :ville, code_post = :code_post,  WHERE id = :id
+      UPDATE user SET nom = :nom, prenom = :prenom, mail = :mail, pass = :pass, tel = :tel, role = :role,  WHERE id = :id
     ");
     return $requet->execute([
       ':id' => $id,
@@ -96,14 +98,12 @@ class ModelClient
       ':mail' => $mail,
       ':pass' => $pass,
       ':tel' => $tel,
-      ':adresse' => $adresse,
-      ':ville' => $ville,
-      ':code_post' => $code_post,
-      ':token' => $token,
+      ':role' => $role,
+
     ]);
   }
 
- 
+
   /*
   
   GETTERS ET SETTERS
@@ -129,35 +129,21 @@ class ModelClient
   {
     return $this->mail;
   }
-  
+
   public function getPass()
   {
     return $this->pass;
   }
-  
+
   public function getTel()
   {
     return $this->tel;
   }
 
-  public function getAdresse()
-  {
-    return $this->adresse;
-  }
 
-  public function getVille()
+  public function getRole()
   {
-    return $this->ville;
-  }
-
-  public function getCode_post()
-  {
-    return $this->code_post;
-  }
-  
-  public function getToken()
-  {
-    return $this->token;
+    return $this->role;
   }
 
   public function setId($id)
@@ -183,7 +169,7 @@ class ModelClient
     $this->mail = $mail;
     return $this;
   }
-  
+
   public function setPass($pass)
   {
     $this->pass = $pass;
@@ -196,24 +182,9 @@ class ModelClient
     return $this;
   }
 
-  public function setAdresse($adresse)
+  public function setRole($role)
   {
-    $this->adresse = $adresse;
+    $this->role = $role;
     return $this;
   }
-
-  public function setVille($ville)
-  {
-    $this->ville = $ville;
-    return $this;
-  }
-
-  public function setCode_post($code_post)
-  {
-    $this->code_post = $code_post;
-    return $this;
-  }
-
-  
 }
-  
