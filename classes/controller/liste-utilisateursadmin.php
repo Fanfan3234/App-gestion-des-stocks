@@ -11,11 +11,11 @@
 
 <body>
   <?php
-  require_once "../view/view-employe.php";
-  require_once "../view/view-template.php";
+  
+  require_once "../view/view-stocks.php";
 
   ViewTemplate::menu();
-  ViewEmploye::listeEmploye();
+  ViewTemplate::listeutilisateuradmin();
   ViewTemplate::footer();
   ?>
 

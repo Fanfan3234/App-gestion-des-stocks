@@ -11,22 +11,22 @@
 
 <body>
   <?php
+  
   require_once "../view/view-stocks.php";
-  require_once "../view/view-stocks.php";
-  require_once "../model/model-client.php";
+  require_once "../model/model-stocks.php";
 
   ViewTemplate::menuutilisateur();
 
   $client = new Modelutilisateur();
   if (isset($_GET['id'])) {
     if ($client->voirutilisateur($_GET['id'])) {
-      Viewutilisateur::modifutilisateur($_GET['id']);
+      ViewTemplate::modifutilisateur($_GET['id']);
     } else {
       ViewTemplate::alert("danger", "Le client  n'existe pas", "liste-utilisateurs.php");
     }
   } else {
-    if (isset($_POST['id']) && $client->voirClient($_POST['id'])) {
-      if ($client->modifClient($_POST['id'], $_POST['nom'], $_POST['prenom'], $_POST['mail'], $_POST['pass'], $_POST['tel'], $_POST['adresse'], $_POST['ville'], $_POST['code_post'],$_POST['token'])) {
+    if (isset($_POST['id']) && $client->voirutilisateur($_POST['id'])) {
+      if ($client->modifutilisateur($_POST['id'], $_POST['nom'], $_POST['prenom'], $_POST['mail'], $_POST['pass'], $_POST['tel'], $_POST['adresse'], $_POST['ville'], $_POST['code_post'],$_POST['token'])) {
         ViewTemplate::alert("success", "Le client a été modifié avec succès", "liste-utilisateurs.php");
       } else {
         ViewTemplate::alert("danger", "Echec de la modification", "liste-utilisateurs.php");

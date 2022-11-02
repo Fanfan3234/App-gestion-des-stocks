@@ -11,14 +11,14 @@
 
 <body>
   <?php
-  require_once "../view/view-client.php";
-  require_once "../view/view-template.php";
-  require_once "../model/model-client.php";
+  
+  require_once "../view/view-stocks.php";
+  require_once "../model/model-stocks.php";
 
-  ViewTemplate::menu();
+  ViewTemplate::menuutilisateur();
 
   if(isset($_GET['id'])) {
-    $client = new ModelClient();
+    $client = new Modelutilisateur();
     if($client->voirClient($_GET['id'])) {
       if($client->suppClient($_GET['id'])){
         ViewTemplate::alert("success", "Client supprimé avec succès", "liste-client.php");

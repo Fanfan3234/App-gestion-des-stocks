@@ -6,7 +6,7 @@
    $erreur="";
    if(isset($valider)){
       include("connexion.php");
-      $sel=$pdo->prepare("select * from utilisateurs where login=? and pass=? limit 1");
+      $sel=$pdo->prepare("select * from user where login=? and pass=? 1");
       $sel->execute(array($login,$pass));
       $tab=$sel->fetchAll();
       if(count($tab)>0){

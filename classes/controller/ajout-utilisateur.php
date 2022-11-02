@@ -11,22 +11,22 @@
 
 <body>
   <?php
-  require_once "../view/view-client.php";
-  require_once "../view/view-template.php";
-  require_once "../model/model-client.php";
+  
+  require_once "../view/view-stocks.php";
+  require_once "../model/model-stocks.php";
 
-  ViewTemplate::menu();
+  ViewTemplate::menuutilisateur();
 
   if (isset($_POST['ajout'])) {
-    $client = new ModelClient();
-    if($client->ajoutClient($_POST['nom'], $_POST['prenom'], $_POST['mail'],$_POST['pass'], $_POST['tel'], $_POST['adresse'], $_POST['ville'], $_POST['code_post'])){
+    $client = new Modelutilisateur();
+    if($client->ajoututilisateur($_POST['nom'], $_POST['prenom'], $_POST['mail'],$_POST['pass'], $_POST['tel'], $_POST['adresse'], $_POST['ville'], $_POST['code_post'])){
       ViewTemplate::alert("success","Client ajouté avec succès", "liste-client.php");
     }
     else {
       ViewTemplate::alert("danger", "Erreur d'ajout", "ajout-client.php");
     }
   } else {
-    ViewClient::ajoutClient();
+    ViewTemplate::ajoututilisateur();
   }
 
   ViewTemplate::footer();

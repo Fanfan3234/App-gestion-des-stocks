@@ -12,7 +12,7 @@
 <body>
   <?php
   
-  require_once "../view/view-template.php";
+  require_once "../view/view-stocks.php";
   
   ViewTemplate::menu();
   ViewTemplate::footer();

@@ -11,11 +11,11 @@
 
 <body>
   <?php
-  require_once "../view/view-client.php";
-  require_once "../view/view-template.php";
+  
+  require_once "../view/view-stocks.php";
 
   ViewTemplate::menu();
-  ViewClient::voirClient($_GET['id']);
+  ViewTemplate::voirutilistaeur($_GET['id']);
   ViewTemplate::footer();
 
   
