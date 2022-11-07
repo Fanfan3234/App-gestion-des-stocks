@@ -1,5 +1,6 @@
 <?php
 require_once "connexion.php";
+
 class Modelutilisateur
 {
   private $id;
@@ -16,20 +17,17 @@ class Modelutilisateur
     $nom = null,
     $prenom = null,
     $mail = null,
-
     $tel = null,
     $role = null,
     $pass = null
   ) {
     $this->id = $id;
-
-    $this->role = $role;
-
     $this->nom = $nom;
     $this->prenom = $prenom;
     $this->mail = $mail;
-    $this->pass = $pass;
     $this->tel = $tel;
+    $this->role = $role;
+    $this->pass = $pass;
   }
 
   public function listeutilisateur()
@@ -44,20 +42,32 @@ class Modelutilisateur
 
 
 
-  public function ajoututilisateur($nom, $prenom, $mail, $pass, $tel, $role)
+  public function ajoututilisateur($nom, $prenom, $mail,  $tel, $pass, $role)
   {
     $idcon = connexion();
-    $requete = $idcon->prepare("INSERT INTO user VALUES ( null, :nom, :prenom, :mail, :pass, :tel, :role, )");
+    $requete = $idcon->prepare("INSERT INTO user VALUES ( null, :nom, :prenom, :mail, :tel, :pass, :r0le)");
 
 
     return $requete->execute([
       ':nom' => $nom,
       ':prenom' => $prenom,
       ':mail' => $mail,
-      ': pass' => $pass,
       ':tel' => $tel,
-      ':role' => $role,
+      ':pass' => $pass,
+      ':r0le' => $role,
     ]);
+  }
+  public static function connexionutilisateur($mail)
+  {
+    $PDO = connexion();
+    $requete = $PDO->prepare("
+      SELECT * FROM user WHERE mail=:mail
+    ");
+
+    $requete->execute([
+      ':mail' => $mail,
+    ]);
+    return $requete->fetch(PDO::FETCH_ASSOC);
   }
 
   public function voirutilisateur($id)
@@ -89,7 +99,7 @@ class Modelutilisateur
   {
     $idcon = connexion();
     $requet = $idcon->prepare("
-      UPDATE user SET nom = :nom, prenom = :prenom, mail = :mail, pass = :pass, tel = :tel, role = :role,  WHERE id = :id
+      UPDATE user SET nom = :nom, prenom = :prenom, mail = :mail, pass = :pass, tel = :tel, r0le = :r0le,  WHERE id = :id
     ");
     return $requet->execute([
       ':id' => $id,
@@ -98,10 +108,12 @@ class Modelutilisateur
       ':mail' => $mail,
       ':pass' => $pass,
       ':tel' => $tel,
-      ':role' => $role,
+      ':r0le' => $role,
 
     ]);
   }
+
+
 
 
   /*

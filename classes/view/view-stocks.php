@@ -1,8 +1,9 @@
 <?php
+require_once '../model/model-stocks.php';
 
-class ViewTemplate
+class Viewutilisateur
 {
-  public static function alert($type = "info", $message = "bite", $lien = null)
+  public static function alert($type = "info", $message = "oui", $lien = null)
   {
 ?>
     <div class="container alert  alert-<?= $type ?>" role="alert">
@@ -19,136 +20,503 @@ class ViewTemplate
 
   }
 
+  public static function menu()
+  {
+  ?>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <div class="container">
 
-  public static function utilisateur()
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+
+            </li>
+
+
+
+
+
+          </ul>
+
+          <a href="login.php?id=" class="btn btn-primary">Connexion<span class="sr-only">(current)</span></a>
+
+
+
+        </div>
+
+      </div>
+
+    </nav>
+  <?php
+
+  }
+
+  public static function menuutilisateur()
   {
 
   ?>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <div class="container">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
+            </li>
+
+            <li class="nav-item active">
+              <a class="nav-link" href="liste-depots.php">listes dépots<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="liste-utilisateurs.php">Listes utilisateurs<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="liste-produits.php">Listes produits<span class="sr-only">(current)</span></a>
+            </li>
+
+
+
+          </ul>
+          <a href="profil.php?id=" class="btn btn-primary">Profil<span class="sr-only">(current)</span></a>
+          &nbsp
+          <a href="deconnexion.php?id=" class="btn btn-primary">Deconnexion<span class="sr-only">(current)</span></a>
+
+
+
+        </div>
+
+      </div>
+
+    </nav>
+  <?php
+
+  }
+
+  public static function menuadmin()
+  {
+  ?>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <div class="container">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
+            </li>
+
+            <li class="nav-item active">
+              <a class="nav-link" href="ajout-utilisateur.php">Ajout utilisateurs <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="liste-utilisateursadmin.php">Listes utilisateurs <span class="sr-only">(current)</span></a>
+            </li>
+            <li>
+            </li>
+
+
+
+          </ul>
+          <a href="profil.php?id=" class="btn btn-primary">Profil<span class="sr-only">(current)</span></a>
+          &nbsp
+          <a href="deconnexion.php?id=" class="btn btn-primary">Deconnexion<span class="sr-only">(current)</span></a>
+
+
+
+        </div>
+
+      </div>
+
+    </nav>
+  <?php
+
+  }
+
+  public static function menudirecteur()
+  {
+
+  ?>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <div class="container">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
+            </li>
+
+            <li class="nav-item active">
+              <a class="nav-link" href="ajout-depot.php">Ajout depots <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="liste-depots.php">Listes depots <span class="sr-only">(current)</span></a>
+            </li>
+            <li>
+            </li>
+
+
+
+          </ul>
+          <a href="profil.php?id=" class="btn btn-primary">Profil<span class="sr-only">(current)</span></a>
+          &nbsp
+          <a href="deconnexion.php?id=" class="btn btn-primary">Deconnexion<span class="sr-only">(current)</span></a>
+
+
+
+        </div>
+
+      </div>
+
+    </nav>
+  <?php
+
+
+  }
+
+  public static function connexionutilisateur()
+  {
+  ?>
+    <div class="container mt-5">
+      <a href="acceuil.php" class="btn btn-primary">Retour</a>
+      <form class="col-md-6 offset-md-3" method="post" action="" <?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?> enctype="multipart/form-data">
+        Connexion
+        <div class="form-group">
+          <label for="mail">Mail : </label>
+          <input type="email" required="veuillez compléter ce champ" class="form-control" name="mail">
+        </div>
+        <div class="form-group">
+          <label for="pass">Mot de passe : </label>
+          <input type="password" required="veuillez compléter ce champ" class="form-control" name="pass">
+        </div>
+        <button type="submit" name="connexion" class="btn btn-primary">Connexion</button>
+
+      </form>
+    </div>
+  <?php
+  }
+
+  public static function listeutilisateur()
+  {
+    $utilisateur = new Modelutilisateur();
+    $liste = $utilisateur->listeutilisateur();
+  ?>
+    <div class="container">
+      <?php
+      if (count($liste) > 0) {
+      ?>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nom</th>
+              <th scope="col">Prénom</th>
+              <th scope="col">Mail</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <?php
+            foreach ($liste as $utilisateur) {
+            ?>
+              <tr>
+                <th scope="row"><?= $utilisateur['id'] ?></th>
+                <td><?= $utilisateur['nom'] ?></td>
+                <td><?= $utilisateur['prenom'] ?></td>
+                <td><?= $utilisateur['mail'] ?></td>
+                <td>
+                  <a href="voir-utilisateur.php?id=<?= $utilisateur['id'] ?>" class="btn btn-primary">Voir</a>
+                </td>
+              </tr>
+            <?php
+            }
+            ?>
+          </tbody>
+        </table>
+      <?php
+      } else {
+      ?>
+        <div class="alert alert-danger" role="alert">
+          Aucun contact n'existe dans la liste.
+        </div>
+      <?php
+      }  ?>
+    </div>
+  <?php
+  }
+
+  public static function listeutilisateuradmin()
+  {
+    $utilisateur = new Modelutilisateur();
+    $liste = $utilisateur->listeutilisateur();
+  ?>
+    <div class="container">
+      <?php
+      if (count($liste) > 0) {
+      ?>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nom</th>
+              <th scope="col">Prénom</th>
+              <th scope="col">Mail</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <?php
+            foreach ($liste as $utilisateur) {
+            ?>
+              <tr>
+                <th scope="row"><?= $utilisateur['id'] ?></th>
+                <td><?= $utilisateur['nom'] ?></td>
+                <td><?= $utilisateur['prenom'] ?></td>
+                <td><?= $utilisateur['mail'] ?></td>
+                <td>
+                  <a href="voir-utilisateur.php?id=<?= $utilisateur['id'] ?>" class="btn btn-primary">Voir</a>
+                  <a href="modif-utilisateur.php?id=<?= $utilisateur['id'] ?>" class="btn btn-info">Modifier</a>
+                  <a href="supp-utilisateur.php?id=<?= $utilisateur['id'] ?>" class="btn btn-danger">Supprimer</a>
+                </td>
+              </tr>
+            <?php
+            }
+            ?>
+          </tbody>
+        </table>
+      <?php
+      } else {
+      ?>
+        <div class="alert alert-danger" role="alert">
+          Aucun contact n'existe dans la liste.
+        </div>
+      <?php
+      }  ?>
+    </div>
+  <?php
+  }
+
+  public static function profil($id)
+  {
+    $utilisateur = new Modelutilisateur();
+    $user = $utilisateur->voirutilisateur($id);
+  ?>
+    <div>
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title"><?= $user['id'] . " : " . $user['nom'] . " : " . $user['prenom'];  ?> </h5>
+
+          <p class="card-text">
+            Mail : <a href="mailto:<?= $user['mail'] ?>" target="_blank"><?= $user['mail'] ?></a><br>
+
+          </p>
+          <a href="modif-utilisateur.php?id=<?= $user['id'] ?>" class="btn btn-info">Modifier</a>
+          <a href="supp-utilisateur.php?id=<?= $user['id'] ?>" class="btn btn-danger">Supprimer</a><br /><br />
+          <a href="liste-utilisateurs.php" class="btn btn-primary">
+            < Retour</a>
+        </div>
+      </div>
+    </div>
+  <?php
+  }
+
+  public static function profiladmin($id)
+  {
+    $utilisateur = new Modelutilisateur();
+    $user = $utilisateur->voirutilisateur($id);
+  ?>
+    <div>
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title"><?= $user['id'] . " : " . $user['nom'] . " : " . $user['prenom'];  ?> </h5>
+
+          <p class="card-text">
+            Mail : <a href="mailto:<?= $user['mail'] ?>" target="_blank"><?= $user['mail'] ?></a><br>
+
+          </p>
+          <a href="modif-utilisateur.php?id=<?= $user['id'] ?>" class="btn btn-info">Modifier</a>
+          <a href="supp-utilisateur.php?id=<?= $user['id'] ?>" class="btn btn-danger">Supprimer</a><br /><br />
+          <a href="liste-utilisateursadmin.php" class="btn btn-primary">
+            < Retour</a>
+        </div>
+      </div>
+    </div>
+  <?php
+  }
+
+  public static function voirutilisateur($id)
+  {
+    $utilisateur = new Modelutilisateur();
+    $user = $utilisateur->voirutilisateur($id);
+  ?>
+    <div>
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title"><?= $user['id'] . " : " . $user['nom'] . " : " . $user['prenom'];  ?> </h5>
+
+          <p class="card-text">
+            Mail : <a href="mailto:<?= $user['mail'] ?>" target="_blank"><?= $user['mail'] ?></a><br>
+
+          </p>
+          <br />
+          <br />
+          <a href="liste-employe.php" class="btn btn-primary">
+            < Retour</a>
+        </div>
+      </div>
+    </div>
+  <?php
+  }
+
+  public static function voirutilisateuradmin($id)
+  {
+    $utilisateur = new Modelutilisateur();
+    $user = $utilisateur->voirutilisateur($id);
+  ?>
+    <div>
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title"><?= $user['id'] . " : " . $user['nom'] . " : " . $user['prenom'];  ?> </h5>
+
+          <p class="card-text">
+            Mail : <a href="mailto:<?= $user['mail'] ?>" target="_blank"><?= $user['mail'] ?></a><br>
+
+          </p>
+          <a href="modif-employe.php?id=<?= $user['id'] ?>" class="btn btn-info">Modifier</a>
+          <a href="supp-employe.php?id=<?= $user['id'] ?>" class="btn btn-danger">Supprimer</a>
+          <br />
+          <br />
+          <a href="liste-employe.php" class="btn btn-primary">
+            < Retour</a>
+        </div>
+      </div>
+    </div>
+  <?php
+  }
+
+  public static function ajoututilisateur()
+  { ?>
     <!DOCTYPE html>
-    <html lang="fr">
+    <html lang="en">
 
     <head>
-      <meta charset="utf-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <meta name="description" content="Interface Admin des contacts" />
-      <meta name="author" content="Rocket Team - AFPA Calais" />
-      <title>Gestion des contacts</title>
-      <link href="css/bootstrap.min.css" rel="stylesheet" />
-      <link href="css/all.min.css" rel="stylesheet" />
-      <link href="css/styles.css" rel="stylesheet" />
-      <link rel="icon" href="https://www.youtube.com/s/desktop/1fa3f652/img/favicon_32x32.png" sizes="32x32">
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Ajout utilisateur</title>
     </head>
 
     <body>
 
-      <header class="navbar navbar-dark sticky-top bg-dark flex-sm-nowrap p-0 shadow">
+      <form class="col-md-6 offset-md-3" method="post" action="<?php htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 
 
-        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+
+        <br />
+        <a href="liste-employe.php" class="btn btn-primary">
+          < Retour</a>
+            <br />
+            <br />
 
 
-        <h1 class="text-light h3 text-center w-100 bg-dark py-2">Gestion des videos</h1>
-      </header>
-
-      <div class="container-fluid">
-        <div class="row">
-          <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light position-fixed collapse">
-            <div class="position-sticky pt-3 sidebar-sticky">
-              <ul class="nav flex-column">
-                <li class="nav-item">
-                  <a class="nav-link text-dark active" aria-current="page" href="#" data-source="tab-bord">
-                    Tableau de bord </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-dark" href="#" data-source="liste">
-                    <i class="fa-brands fa-youtube"></i> Liste des videos
-                  </a>
-
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-dark" href="#" data-source="nouveau">
-                    <i class="fa-sharp fa-solid fa-plus"></i> Nouvelle vidéo
-                  </a>
-
-                </li>
-              </ul>
+            <div class="form-group">
+              <label for="nom">Nom : </label>
+              <input type="text" required="veuillez compléter ce champ" class="form-control" name="nom" id="nom">
             </div>
-          </nav>
+            <div class="form-group">
+              <label for="prenom">Prenom : </label>
+              <input type="text" required="veuillez compléter ce champ" class="form-control" name="prenom" id="prenom">
+            </div>
+            <div class="form-group">
+              <label for="mail">Adresse mail : </label>
+              <input type="email" required="veuillez compléter ce champ" class="form-control" name="mail" id="mail">
+            </div>
+            <div class="form-group">
+              <label for="tel">Tel : </label>
+              <input type="tel" required="veuillez compléter ce champ" class="form-control" name="tel" id="tel">
+            </div>
+            <div class="form-group">
+              <label for="pass">Mot de passe : </label>
+              <input type="password" required="veuillez compléter ce champ" class="form-control" name="pass" id="pass">
 
-          <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-            <section class="contenu" data-cible="tab-bord">
-              <h2 class="py-4 h1 ">Tableau de bord</h2>
-              <h2>Cet espace est dedié à lister les divers sketchs des inconnus.</h2>
-            </section>
-
-            <section class="contenu" data-cible="liste">
-              <h2>Liste des videos
-              </h2>
-            </section>
-
-
-            <section class="contenu col-12 col-md-6 offset-md-1 mt-5" data-cible="nouveau">
-              <h2 class="h1 text-center">Ajout de video </h2>
-              <form>
-                <div class="mb-3">
-                  <label for="miniature" class="form-label">Lien de la miniature :</label>
-                  <input type="text" class="form-control" id="miniature" name="miniature" />
-                </div>
-                <div class="mb-3">
-                  <label for="nom" class="form-label">Nom :</label>
-                  <input type="text" class="form-control" id="nom" name="nom" />
-                </div>
-                <div class="mb-3">
-                  <label for="lien" class="form-label">Lien de la video :</label>
-                  <input type="text" class="form-control" id="lien" name="lien" />
-                </div>
-                <button type="submit" class="btn btn-primary px-3">Ajouter</button>
-                <button type="reset" class="btn btn-danger  ms-5 px-3">Réinitialiser</button>
-              </form>
-            </section>
+            </div>
+            <div class="form-group">
+              <label for="r0le" id="r0le">role : </label>
+              <input type="text" class="form-control" name="r0le" id="r0le">
+            </div>
 
 
 
-            <section class="contenu col-12 col-md-6 offset-md-1 mt-5" data-cible="modif">
-              <h2 class="h1 text-center">Modification de video </h2>
-              <form>
-                <input type="hidden" name="idModif" id="idModif">
 
-                <div class="mb-3">
-                  <label for="miniature" class="form-label">Lien de la nouvelle miniature :</label>
-                  <input type="text" class="form-control" id="miniatureModif" name="miniatureModif" />
-                </div>
-                <div class="mb-3">
-                  <label for="nom" class="form-label">Nom :</label>
-                  <input type="text" class="form-control" id="nomModif" name="nomModif" />
-                </div>
-                <div class="mb-3">
-                  <label for="lien" class="form-label">Nouveau lien de la video :</label>
-                  <input type="text" class="form-control" id="lienModif" name="lienModif" />
-                </div>
-                <button type="submit" class="btn btn-primary px-3">Modifier</button>
-                <button type="reset" class="btn btn-danger  ms-5 px-3">Réinitialiser</button>
-              </form>
-            </section>
+            <button type="submit" class="btn btn-primary" name="ajout" id="ajout"> Ajouter </button>
 
-            <section class="position-absolute top-50 end-0 notif"></section>
-          </main>
-        </div>
-      </div>
-
-      <script src="js/jquery-3.6.1.min.js"></script>
-      <script src="js/bootstrap.bundle.min.js"></script>
-      <script src="js/all.min.js"></script>
-      <script type="../back" src="db.json"></script>
-      <script src="js/main.js"></script>
-
+            <button type="reset" class="btn btn-danger"> Réinitialiser </button>
+      </form>
     </body>
 
     </html>
-  <?php
 
+  <?php
+  }
+
+  public static function modifutilisateur($id)
+  {
+    $utilisateur = new Modelutilisateur();
+    $user = $utilisateur->voirutilisateur($id);
+  ?>
+
+    <form class="col-md-6 offset-md-3" method="post" action="modif-employe.php">
+      <input type="hidden" class="form-control" name="id" id="id" value="<?= $user['id'] ?>">
+      <div class="form-group">
+        <label for="nom"> Nom: < /label>
+            <input type="text" class="form-control" name="nom" id="nom" value="<?= $user['nom'] ?>">
+      </div>
+      <div class="form-group">
+        <label for="prenom"> Prenom: </label>
+        <input type="text" class="form-control" name="prenom" id="prenom" value="<?= $user['prenom'] ?>">
+      </div>
+      <div class="form-group">
+        <label for="mail"> Adresse mail: </label>
+        <input type="email" class="form-control" name="mail" id="mail" value="<?= $user['mail'] ?>">
+      </div>
+      <div class="form-group">
+        <label for="pass"> Mot de passe: </label>
+        <input type="password" class="form-control" name="pass" id="pass">
+      </div>
+
+      <button type="submit" class="btn btn-primary" name="modif" id="modif"> Modifier </button>
+      <button type="reset" class="btn btn-danger"> Réinitialiser </button>
+    </form>
+  <?php
   }
 
   public static function footer()

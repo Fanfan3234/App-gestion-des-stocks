@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-  <title>Liste des employes</title>
+  <title>Liste des utilisateurs</title>
 </head>
 
 <body>
@@ -14,9 +14,9 @@
   
   require_once "../view/view-stocks.php";
 
-  ViewTemplate::menu();
-  ViewTemplate::listeutilisateuradmin();
-  ViewTemplate::footer();
+  Viewutilisateur::menuadmin();
+  Viewutilisateur::listeutilisateuradmin();
+  Viewutilisateur::footer();
   ?>
 
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

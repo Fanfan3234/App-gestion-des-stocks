@@ -14,8 +14,8 @@
   
   require_once "../view/view-stocks.php";
   
-  ViewTemplate::menu();
-  ViewTemplate::footer();
+  Viewutilisateur::menu();
+  Viewutilisateur::footer();
   ?>
   
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

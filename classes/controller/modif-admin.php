@@ -6,34 +6,34 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-  <title>Ajout d'utilisateur</title>
+  <title>Modification d'utilisateurs</title>
 </head>
 
 <body>
   <?php
-
+  
   require_once "../view/view-stocks.php";
   require_once "../model/model-stocks.php";
 
-  if (isset($_POST['ajout'])) {
+  Viewutilisateur::menuadmin();
 
-    $employe = new Modelutilisateur();
-    $userData = $employe->connexionutilisateur($_POST['mail']);
-
-    if ($userData['mail'] = $_POST['mail']); {
-      Viewutilisateur::alert("danger", "Mail déja existant !", "ajout-utilisateur.php");
-    }
-    else {
-      $user = new Modelutilisateur();
-      $pass = password_hash($_POST['pass'], PASSWORD_DEFAULT);
-      ($user->ajoututilisateur($_POST['nom'], $_POST['prenom'], $_POST['mail'], $_POST['tel'], $pass, $_POST['r0le']));
-  ?>
-      <br />
-  <?php
-      Viewutilisateur::alert("success", "utilisateur ajouté avec succès", "login.php");
+  $client = new Modelutilisateur();
+  if (isset($_GET['id'])) {
+    if ($client->voirutilisateur($_GET['id'])) {
+      Viewutilisateur::modifutilisateur($_GET['id']);
+    } else {
+      Viewutilisateur::alert("danger", "L'utilisateur'  n'existe pas", "liste-utilisateurs.php");
     }
   } else {
-    Viewutilisateur::ajoututilisateur();
+    if (isset($_POST['id']) && $client->voirutilisateur($_POST['id'])) {
+      if ($client->modifutilisateur($_POST['id'], $_POST['nom'], $_POST['prenom'], $_POST['mail'], $_POST['pass'], $_POST['tel'], $_POST['adresse'], $_POST['ville'], $_POST['code_post'],$_POST['token'])) {
+        Viewutilisateur::alert("success", "L'utilisateur' a été modifié avec succès", "profil-admin.php");
+      } else {
+        Viewutilisateur::alert("danger", "Echec de la modification", "profil-admin.php");
+      }
+    } else {
+      Viewutilisateur::alert("danger", "Aucune donnée n'a été transmise", "profil-admin.php");
+    }
   }
 
   Viewutilisateur::footer();

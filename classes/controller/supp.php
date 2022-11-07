@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-  <title>Suppression de client</title>
+  <title>Suppression d'utilisateur</title>
 </head>
 
 <body>
@@ -15,27 +15,27 @@
   require_once "../view/view-stocks.php";
   require_once "../model/model-stocks.php";
 
-  ViewTemplate::menuutilisateur();
+  Viewutilisateur::menuutilisateur();
 
   if(isset($_GET['id'])) {
     $client = new Modelutilisateur();
-    if($client->voirClient($_GET['id'])) {
-      if($client->suppClient($_GET['id'])){
-        ViewTemplate::alert("success", "Client supprimé avec succès", "liste-client.php");
+    if($client->voirutilisateur($_GET['id'])) {
+      if($client->supputilisateur($_GET['id'])){
+        Viewutilisateur::alert("success", "Utilisateur supprimé avec succès", "liste-utilisateurs.php");
       }
       else{
-        ViewTemplate::alert("danger", "Echec de la suppression", "liste-client.php");
+        Viewutilisateur::alert("danger", "Echec de la suppression", "liste-utilisateurs.php");
       }
     }
     else {
-      ViewTemplate::alert("danger", "Contact n'existe pas", "liste-client.php");
+      Viewutilisateur::alert("danger", "utilisateur n'existe pas", "liste-utilisateurs.php");
     }
   }
   else {
-    ViewTemplate::alert("danger", "Aucune donnée n'a été transmise", "liste-client.php");
+    Viewutilisateur::alert("danger", "Aucune donnée n'a été transmise", "liste-utilisateurs.php");
   }
 
-  ViewTemplate::footer();
+  Viewutilisateur::footer();
   ?>
 
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

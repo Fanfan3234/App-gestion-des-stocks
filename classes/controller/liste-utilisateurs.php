@@ -2,15 +2,12 @@
 <html lang="fr">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Interface Admin des contacts" />
-  <meta name="author" content="Rocket Team - AFPA Calais" />
+<meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
   <title>liste des utilisateurs</title>
-  <link href="css/bootstrap.min.css" rel="stylesheet" />
-  <link href="css/all.min.css" rel="stylesheet" />
-  <link href="css/styles.css" rel="stylesheet" />
-  <link rel="icon" href="https://www.youtube.com/s/desktop/1fa3f652/img/favicon_32x32.png" sizes="32x32">
+  
 </head>
 
 <body>
@@ -18,9 +15,9 @@
   
   require_once "../view/view-stocks.php";
 
-  ViewTemplate::menu();
-  ViewTemplate::listeutilisateur();
-  ViewTemplate::footer();
+  Viewutilisateur::menuutilisateur();
+  Viewutilisateur::listeutilisateur();
+  Viewutilisateur::footer();
   ?>
 
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
