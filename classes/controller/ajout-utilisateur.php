@@ -16,18 +16,19 @@
   require_once "../model/model-stocks.php";
 
   if (isset($_POST['ajout'])) {
-
     $employe = new Modelutilisateur();
     $userData = $employe->connexionutilisateur($_POST['mail']);
 
-    if ($userData['mail'] = $_POST['mail']); {
+    if ($userData['mail'] === $_POST['mail']) {
+  ?>
+      <br />
+    <?php
       Viewutilisateur::alert("danger", "Mail déja existant !", "ajout-utilisateur.php");
-    }
-    else {
+    } else {
       $user = new Modelutilisateur();
       $pass = password_hash($_POST['pass'], PASSWORD_DEFAULT);
       ($user->ajoututilisateur($_POST['nom'], $_POST['prenom'], $_POST['mail'], $_POST['tel'], $pass, $_POST['r0le']));
-  ?>
+    ?>
       <br />
   <?php
       Viewutilisateur::alert("success", "utilisateur ajouté avec succès", "login.php");
