@@ -20,19 +20,20 @@
   $client = new Modelutilisateur();
   if (isset($_GET['id'])) {
     if ($client->voirutilisateur($_GET['id'])) {
-      Viewutilisateur::modifutilisateur($_GET['id']);
+      Viewutilisateur::modifutilisateuradmin($_GET['id']);
     } else {
-      Viewutilisateur::alert("danger", "L'utilisateur'  n'existe pas", "liste-utilisateurs.php");
+      Viewutilisateur::alert("danger", "L'utilisateur'  n'existe pas", "liste-utilisateursadmin.php");
     }
   } else {
     if (isset($_POST['id']) && $client->voirutilisateur($_POST['id'])) {
-      if ($client->modifutilisateur($_POST['id'], $_POST['nom'], $_POST['prenom'], $_POST['mail'], $_POST['pass'], $_POST['tel'], $_POST['adresse'], $_POST['ville'], $_POST['code_post'],$_POST['token'])) {
-        Viewutilisateur::alert("success", "L'utilisateur' a été modifié avec succès", "profil-admin.php");
+      $pass = password_hash($_POST['pass'], PASSWORD_DEFAULT);
+      if ($client->modifutilisateuradmin($_POST['id'], $_POST['nom'], $_POST['prenom'], $_POST['mail'], $pass, $_POST['tel'],$_POST['r0le'])) {
+        Viewutilisateur::alert("success", "L'utilisateur' a été modifié avec succès", "liste-utilisateursadmin.php");
       } else {
-        Viewutilisateur::alert("danger", "Echec de la modification", "profil-admin.php");
+        Viewutilisateur::alert("danger", "Echec de la modification", "liste-utilisateursadmin.php");
       }
     } else {
-      Viewutilisateur::alert("danger", "Aucune donnée n'a été transmise", "profil-admin.php");
+      Viewutilisateur::alert("danger", "Aucune donnée n'a été transmise", "liste-utilisateursadmin.php");
     }
   }
 

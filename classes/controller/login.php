@@ -46,8 +46,8 @@ session_start();
             header('Location: page-utilisateur.php');
          }
       } else {
-         Viewutilisateur::alert("danger", "Identifiants incorrects");
-         header('login.php');
+         Viewutilisateur::alert("danger", "Identifiants incorrects", "login.php");
+         
       }
    } else {
       Viewutilisateur::connexionutilisateur();

@@ -82,6 +82,8 @@ class Modelutilisateur
     return $requete->fetch(PDO::FETCH_ASSOC);
   }
 
+
+
   public function supputilisateur($id)
   {
     $idcon = connexion();
@@ -95,7 +97,25 @@ class Modelutilisateur
 
 
 
-  public function modifutilisateur($id, $nom, $prenom, $mail, $pass, $tel, $role)
+  public function modifutilisateur($id, $nom, $prenom, $mail, $pass, $tel)
+  {
+    $idcon = connexion();
+    $requet = $idcon->prepare("
+      UPDATE user SET nom = :nom, prenom = :prenom, mail = :mail, pass = :pass, tel = :tel,  WHERE id = :id
+    ");
+    return $requet->execute([
+      ':id' => $id,
+      ':nom' => $nom,
+      ':prenom' => $prenom,
+      ':mail' => $mail,
+      ':pass' => $pass,
+      ':tel' => $tel,
+
+
+    ]);
+  }
+
+  public function modifutilisateuradmin($id, $nom, $prenom, $mail, $pass, $tel, $role)
   {
     $idcon = connexion();
     $requet = $idcon->prepare("

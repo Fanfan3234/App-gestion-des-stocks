@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-  <title>Modification d'utilisateurs</title>
+  <title>Modification d'utilisateur</title>
 </head>
 
 <body>
@@ -22,17 +22,18 @@
     if ($client->voirutilisateur($_GET['id'])) {
       Viewutilisateur::modifutilisateur($_GET['id']);
     } else {
-      Viewutilisateur::alert("danger", "Le client  n'existe pas", "liste-utilisateurs.php");
+      Viewutilisateur::alert("danger", "L'utilisateur n'existe pas", "liste-utilisateurs.php");
     }
   } else {
     if (isset($_POST['id']) && $client->voirutilisateur($_POST['id'])) {
-      if ($client->modifutilisateur($_POST['id'], $_POST['nom'], $_POST['prenom'], $_POST['mail'], $_POST['pass'], $_POST['tel'], $_POST['adresse'], $_POST['ville'], $_POST['code_post'], $_POST['token'])) {
-        Viewutilisateur::alert("success", "L'utilisateur' a été modifié avec succès", "profil.php");
+      $pass = password_hash($_POST['pass'], PASSWORD_DEFAULT);
+      if ($client->modifutilisateur($_POST['id'], $_POST['nom'], $_POST['prenom'], $_POST['mail'], $pass, $_POST['tel'])) {
+        Viewutilisateur::alert("success", "L'utilisateur' a été modifié avec succès", "liste-utilisateurs.php");
       } else {
-        Viewutilisateur::alert("danger", "Echec de la modification", "profil.php");
+        Viewutilisateur::alert("danger", "Echec de la modification", "liste-utilisateurs.php");
       }
     } else {
-      Viewutilisateur::alert("danger", "Aucune donnée n'a été transmise", "profil.php");
+      Viewutilisateur::alert("danger", "Aucune donnée n'a été transmise", "liste-utilisateurs.php");
     }
   }
 

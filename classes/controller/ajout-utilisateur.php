@@ -31,7 +31,7 @@
     ?>
       <br />
   <?php
-      Viewutilisateur::alert("success", "utilisateur ajouté avec succès", "login.php");
+      Viewutilisateur::alert("success", "utilisateur ajouté avec succès", "liste-utilisateursadmin.php");
     }
   } else {
     Viewutilisateur::ajoututilisateur();

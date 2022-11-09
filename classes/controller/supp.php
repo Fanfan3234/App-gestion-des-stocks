@@ -21,18 +21,18 @@
     $client = new Modelutilisateur();
     if($client->voirutilisateur($_GET['id'])) {
       if($client->supputilisateur($_GET['id'])){
-        Viewutilisateur::alert("success", "Utilisateur supprimé avec succès", "liste-utilisateurs.php");
+        Viewutilisateur::alert("success", "Utilisateur supprimé avec succès", "deconnexion.php");
       }
       else{
-        Viewutilisateur::alert("danger", "Echec de la suppression", "liste-utilisateurs.php");
+        Viewutilisateur::alert("danger", "Echec de la suppression", "profil-utilisateur.php");
       }
     }
     else {
-      Viewutilisateur::alert("danger", "utilisateur n'existe pas", "liste-utilisateurs.php");
+      Viewutilisateur::alert("danger", "utilisateur n'existe pas", "deconnexion.php.php");
     }
   }
   else {
-    Viewutilisateur::alert("danger", "Aucune donnée n'a été transmise", "liste-utilisateurs.php");
+    Viewutilisateur::alert("danger", "Aucune donnée n'a été transmise", "profil.php");
   }
 
   Viewutilisateur::footer();

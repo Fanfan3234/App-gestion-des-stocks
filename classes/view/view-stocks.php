@@ -90,7 +90,7 @@ class Viewutilisateur
 
 
           </ul>
-          <a href="profil.php?id=" class="btn btn-primary">Profil<span class="sr-only">(current)</span></a>
+          <a href="profil-utilisateur.php?id=" class="btn btn-primary">Profil<span class="sr-only">(current)</span></a>
           &nbsp
           <a href="deconnexion.php?id=" class="btn btn-primary">Deconnexion<span class="sr-only">(current)</span></a>
 
@@ -137,7 +137,7 @@ class Viewutilisateur
 
 
           </ul>
-          <a href="profil.php?id=" class="btn btn-primary">Profil<span class="sr-only">(current)</span></a>
+          <a href="profil-admin.php?id=" class="btn btn-primary">Profil<span class="sr-only">(current)</span></a>
           &nbsp
           <a href="deconnexion.php?id=" class="btn btn-primary">Deconnexion<span class="sr-only">(current)</span></a>
 
@@ -185,7 +185,7 @@ class Viewutilisateur
 
 
           </ul>
-          <a href="profil.php?id=" class="btn btn-primary">Profil<span class="sr-only">(current)</span></a>
+          <a href="profil-directeur.php?id=" class="btn btn-primary">Profil<span class="sr-only">(current)</span></a>
           &nbsp
           <a href="deconnexion.php?id=" class="btn btn-primary">Deconnexion<span class="sr-only">(current)</span></a>
 
@@ -239,6 +239,7 @@ class Viewutilisateur
               <th scope="col">Nom</th>
               <th scope="col">Prénom</th>
               <th scope="col">Mail</th>
+              <th scope="col">Tel</th>
               <th scope="col">Actions</th>
             </tr>
           </thead>
@@ -252,6 +253,7 @@ class Viewutilisateur
                 <td><?= $utilisateur['nom'] ?></td>
                 <td><?= $utilisateur['prenom'] ?></td>
                 <td><?= $utilisateur['mail'] ?></td>
+                <td><?= $utilisateur['tel'] ?></td>
                 <td>
                   <a href="voir-utilisateur.php?id=<?= $utilisateur['id'] ?>" class="btn btn-primary">Voir</a>
                 </td>
@@ -289,6 +291,8 @@ class Viewutilisateur
               <th scope="col">Nom</th>
               <th scope="col">Prénom</th>
               <th scope="col">Mail</th>
+              <th scope="col">Tel</th>
+              <th scope="col">Role</th>
               <th scope="col">Actions</th>
             </tr>
           </thead>
@@ -302,10 +306,12 @@ class Viewutilisateur
                 <td><?= $utilisateur['nom'] ?></td>
                 <td><?= $utilisateur['prenom'] ?></td>
                 <td><?= $utilisateur['mail'] ?></td>
+                <td><?= $utilisateur['tel'] ?></td>
+                <td><?= $utilisateur['r0le'] ?></td>
                 <td>
-                  <a href="voir-utilisateur.php?id=<?= $utilisateur['id'] ?>" class="btn btn-primary">Voir</a>
-                  <a href="modif-utilisateur.php?id=<?= $utilisateur['id'] ?>" class="btn btn-info">Modifier</a>
-                  <a href="supp-utilisateur.php?id=<?= $utilisateur['id'] ?>" class="btn btn-danger">Supprimer</a>
+                  <a href="voir-utilisateuradmin.php?id=<?= $utilisateur['id'] ?>" class="btn btn-primary">Voir</a>
+                  <a href="modif-admin.php?id=<?= $utilisateur['id'] ?>" class="btn btn-info">Modifier</a>
+                  <a href="supp-admin.php?id=<?= $utilisateur['id'] ?>" class="btn btn-danger">Supprimer</a>
                 </td>
               </tr>
             <?php
@@ -325,10 +331,10 @@ class Viewutilisateur
   <?php
   }
 
-  public static function profil($id)
+  public static function profilutilisateur($id)
   {
     $utilisateur = new Modelutilisateur();
-    $user = $utilisateur->voirutilisateur($id);
+    $user = $utilisateur->profil($id);
   ?>
     <div>
       <div class="card" style="width: 18rem;">
@@ -340,7 +346,31 @@ class Viewutilisateur
 
           </p>
           <a href="modif-utilisateur.php?id=<?= $user['id'] ?>" class="btn btn-info">Modifier</a>
-          <a href="supp-utilisateur.php?id=<?= $user['id'] ?>" class="btn btn-danger">Supprimer</a><br /><br />
+          <a href="supp.php?id=<?= $user['id'] ?>" class="btn btn-danger">Supprimer</a><br /><br />
+          <a href="liste-utilisateurs.php" class="btn btn-primary">
+            < Retour</a>
+        </div>
+      </div>
+    </div>
+  <?php
+  }
+
+  public static function profildirecteur($id)
+  {
+    $utilisateur = new Modelutilisateur();
+    $user = $utilisateur->profil($id);
+  ?>
+    <div>
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title"><?= $user['id'] . " : " . $user['nom'] . " : " . $user['prenom'];  ?> </h5>
+
+          <p class="card-text">
+            Mail : <a href="mailto:<?= $user['mail'] ?>" target="_blank"><?= $user['mail'] ?></a><br>
+
+          </p>
+          <a href="modif-utilisateur.php?id=<?= $user['id'] ?>" class="btn btn-info">Modifier</a>
+          <a href="supp.php?id=<?= $user['id'] ?>" class="btn btn-danger">Supprimer</a><br /><br />
           <a href="liste-utilisateurs.php" class="btn btn-primary">
             < Retour</a>
         </div>
@@ -352,7 +382,7 @@ class Viewutilisateur
   public static function profiladmin($id)
   {
     $utilisateur = new Modelutilisateur();
-    $user = $utilisateur->voirutilisateur($id);
+    $user = $utilisateur->profil($id);
   ?>
     <div>
       <div class="card" style="width: 18rem;">
@@ -364,7 +394,7 @@ class Viewutilisateur
 
           </p>
           <a href="modif-utilisateur.php?id=<?= $user['id'] ?>" class="btn btn-info">Modifier</a>
-          <a href="supp-utilisateur.php?id=<?= $user['id'] ?>" class="btn btn-danger">Supprimer</a><br /><br />
+          <a href="supp.php?id=<?= $user['id'] ?>" class="btn btn-danger">Supprimer</a><br /><br />
           <a href="liste-utilisateursadmin.php" class="btn btn-primary">
             < Retour</a>
         </div>
@@ -389,7 +419,7 @@ class Viewutilisateur
           </p>
           <br />
           <br />
-          <a href="liste-employe.php" class="btn btn-primary">
+          <a href="liste-utilisateurs.php" class="btn btn-primary">
             < Retour</a>
         </div>
       </div>
@@ -411,11 +441,11 @@ class Viewutilisateur
             Mail : <a href="mailto:<?= $user['mail'] ?>" target="_blank"><?= $user['mail'] ?></a><br>
 
           </p>
-          <a href="modif-employe.php?id=<?= $user['id'] ?>" class="btn btn-info">Modifier</a>
-          <a href="supp-employe.php?id=<?= $user['id'] ?>" class="btn btn-danger">Supprimer</a>
+          <a href="modif-admin.php?id=<?= $user['id'] ?>" class="btn btn-info">Modifier</a>
+          <a href="supp.php?id=<?= $user['id'] ?>" class="btn btn-danger">Supprimer</a>
           <br />
           <br />
-          <a href="liste-employe.php" class="btn btn-primary">
+          <a href="liste-utilisateursadmin.php" class="btn btn-primary">
             < Retour</a>
         </div>
       </div>
@@ -442,7 +472,7 @@ class Viewutilisateur
 
 
         <br />
-        <a href="liste-employe.php" class="btn btn-primary">
+        <a href="liste--utilisateursadmin.php" class="btn btn-primary">
           < Retour</a>
             <br />
             <br />
@@ -494,10 +524,10 @@ class Viewutilisateur
     $user = $utilisateur->voirutilisateur($id);
   ?>
 
-    <form class="col-md-6 offset-md-3" method="post" action="modif-employe.php">
+    <form class="col-md-6 offset-md-3" method="post" action="modif-utilisateur.php">
       <input type="hidden" class="form-control" name="id" id="id" value="<?= $user['id'] ?>">
       <div class="form-group">
-        <label for="nom"> Nom: < /label>
+        <label for="nom"> Nom: </label>
             <input type="text" class="form-control" name="nom" id="nom" value="<?= $user['nom'] ?>">
       </div>
       <div class="form-group">
@@ -511,6 +541,51 @@ class Viewutilisateur
       <div class="form-group">
         <label for="pass"> Mot de passe: </label>
         <input type="password" class="form-control" name="pass" id="pass">
+      </div>
+      <div class="form-group">
+        <label for="tel"> Tel: </label>
+        <input type="text" class="form-control" name="tel" id="tel">
+      </div>
+
+      <button type="submit" class="btn btn-primary" name="modif" id="modif"> Modifier </button>
+      <button type="reset" class="btn btn-danger"> Réinitialiser </button>
+    </form>
+  <?php
+  }
+
+  
+
+  public static function modifutilisateuradmin($id)
+  {
+    $utilisateur = new Modelutilisateur();
+    $user = $utilisateur->voirutilisateur($id);
+  ?>
+
+    <form class="col-md-6 offset-md-3" method="post" action="modif-admin.php">
+      <input type="hidden" class="form-control" name="id" id="id" value="<?= $user['id'] ?>">
+      <div class="form-group">
+        <label for="nom"> Nom: </label>
+            <input type="text" class="form-control" name="nom" id="nom" value="<?= $user['nom'] ?>">
+      </div>
+      <div class="form-group">
+        <label for="prenom"> Prenom: </label>
+        <input type="text" class="form-control" name="prenom" id="prenom" value="<?= $user['prenom'] ?>">
+      </div>
+      <div class="form-group">
+        <label for="mail"> Adresse mail: </label>
+        <input type="mail" class="form-control" name="mail" id="mail" value="<?= $user['mail'] ?>">
+      </div>
+      <div class="form-group">
+        <label for="pass"> Mot de passe: </label>
+        <input type="pass" class="form-control" name="pass" id="pass">
+      </div>
+      <div class="form-group">
+        <label for="tel"> Tel: </label>
+        <input type="tel" class="form-control" name="tel" id="tel">
+      </div>
+      <div class="form-group">
+        <label for="r0le"> Role: </label>
+        <input type="r0le" class="form-control" name="r0le" id="r0le">
       </div>
 
       <button type="submit" class="btn btn-primary" name="modif" id="modif"> Modifier </button>
