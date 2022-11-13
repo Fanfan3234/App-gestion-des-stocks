@@ -27,10 +27,11 @@
   } else {
     if (isset($_POST['id']) && $client->voirutilisateur($_POST['id'])) {
       $pass = password_hash($_POST['pass'], PASSWORD_DEFAULT);
-      if ($client->modifutilisateuradmin($_POST['id'], $_POST['nom'], $_POST['prenom'], $_POST['mail'], $pass, $_POST['tel'],$_POST['r0le'])) {
+      if ($client->modifutilisateuradmin($_POST['id'], $_POST['nom'], $_POST['prenom'], $_POST['mail'], $_POST['tel'], $pass, $_POST['r0le'])) {
         Viewutilisateur::alert("success", "L'utilisateur' a été modifié avec succès", "liste-utilisateursadmin.php");
       } else {
         Viewutilisateur::alert("danger", "Echec de la modification", "liste-utilisateursadmin.php");
+        var_dump($_POST['id'], $_POST['nom'], $_POST['prenom'], $_POST['mail'], $_POST['tel'], $pass, $_POST['r0le']);
       }
     } else {
       Viewutilisateur::alert("danger", "Aucune donnée n'a été transmise", "liste-utilisateursadmin.php");

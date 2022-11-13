@@ -15,7 +15,7 @@
   require_once "../view/view-stocks.php";
 
   Viewutilisateur::menuutilisateur();
-  Viewutilisateur::profilutilisateur($_GET['id']);
+  Viewutilisateur::profil($_GET['id']);
   Viewutilisateur::footer();
 
   

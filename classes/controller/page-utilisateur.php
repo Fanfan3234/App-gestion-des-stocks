@@ -15,7 +15,7 @@
   require_once "../view/view-stocks.php";
   
   Viewutilisateur::menuutilisateur();
-  
+  Viewutilisateur::pageutilisateur();
   Viewutilisateur::footer();
   ?>
   

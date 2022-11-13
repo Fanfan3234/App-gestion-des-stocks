@@ -24,33 +24,11 @@ class Viewutilisateur
   {
   ?>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
-      <a class="navbar-brand" href="#">Navbar</a>
-      <div class="container">
+      <a class="navbar-brand" href="acceuil.php">Acceuil</a>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-
-            </li>
-
-
-
-
-
-          </ul>
-
-          <a href="login.php?id=" class="btn btn-primary">Connexion<span class="sr-only">(current)</span></a>
-
-
-
-        </div>
-
+      <div class="container d-flex justify-content-end">
+        <a href="login.php?id=" class="btn btn-primary ">Connexion<span class="sr-only">(current)</span></a>
       </div>
-
     </nav>
   <?php
 
@@ -58,45 +36,48 @@ class Viewutilisateur
 
   public static function menuutilisateur()
   {
+    session_start();
+
+    $bienvenue = "" .
+      $_SESSION["prenom"] . "";
 
   ?>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand" href="page-utilisateur.php">Acceuil</a>
       <div class="container">
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+        <ul class="navbar-nav mr-auto">
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-              </form>
-            </li>
-
-            <li class="nav-item active">
-              <a class="nav-link" href="liste-depots.php">listes dépots<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="liste-utilisateurs.php">Listes utilisateurs<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="liste-produits.php">Listes produits<span class="sr-only">(current)</span></a>
-            </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="liste-depots.php">Dépots<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="liste-utilisateurs.php">Utilisateurs<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="liste-produits.php">Produits<span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+        <div class="d-flex justify-content-around">
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+        &nbsp
+        &nbsp
 
 
 
-          </ul>
-          <a href="profil-utilisateur.php?id=" class="btn btn-primary">Profil<span class="sr-only">(current)</span></a>
+
+        <div class="d-flex justify-content-around">
+          <a href="profil-utilisateur.php?id=<?= $_SESSION['id'] ?>" class="btn btn-primary"><?php echo $bienvenue ?><span class="sr-only">(current)</span></a>
           &nbsp
           <a href="deconnexion.php?id=" class="btn btn-primary">Deconnexion<span class="sr-only">(current)</span></a>
-
-
-
         </div>
+
+
+      </div>
 
       </div>
 
@@ -107,45 +88,49 @@ class Viewutilisateur
 
   public static function menuadmin()
   {
+    session_start();
+
+    $bienvenue = "" .
+      $_SESSION["prenom"] . "";
+
+
   ?>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand" href="page-admin.php">Acceuil</a>
       <div class="container">
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-              </form>
-            </li>
-
-            <li class="nav-item active">
-              <a class="nav-link" href="ajout-utilisateur.php">Ajout utilisateurs <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="liste-utilisateursadmin.php">Listes utilisateurs <span class="sr-only">(current)</span></a>
-            </li>
-            <li>
-            </li>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="liste-utilisateursadmin.php">Utilisateurs<span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
 
 
-
-          </ul>
-          <a href="profil-admin.php?id=" class="btn btn-primary">Profil<span class="sr-only">(current)</span></a>
-          &nbsp
-          <a href="deconnexion.php?id=" class="btn btn-primary">Deconnexion<span class="sr-only">(current)</span></a>
-
-
-
+        <div class="d-flex justify-content-around">
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
         </div>
+        &nbsp
+        &nbsp
+
+
+
+
+
+
 
       </div>
+      <div class="d-flex justify-content-around">
+
+        <a href="profil-admin.php?id=<?= $_SESSION['id'] ?>" class="btn btn-primary"><?php echo $bienvenue ?><span class="sr-only">(current)</span></a>
+        &nbsp
+        <a href="deconnexion.php?id=" class="btn btn-primary">Deconnexion<span class="sr-only">(current)</span></a>
+      </div>
+
+
+
 
     </nav>
   <?php
@@ -154,44 +139,47 @@ class Viewutilisateur
 
   public static function menudirecteur()
   {
+    session_start();
+
+    $bienvenue = "" .
+      $_SESSION["prenom"] . "";
 
   ?>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand" href="page-directeur.php">Acceuil</a>
       <div class="container">
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-              </form>
-            </li>
 
-            <li class="nav-item active">
-              <a class="nav-link" href="ajout-depot.php">Ajout depots <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="liste-depots.php">Listes depots <span class="sr-only">(current)</span></a>
-            </li>
-            <li>
-            </li>
+        <ul class="navbar-nav mr-auto">
+
+
+          <li class="nav-item active">
+            <a class="nav-link" href="liste-depotsdir.php">Depots <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="liste-produitsdir.php">Produits <span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+
+        <div class="d-flex justify-content-around">
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
 
 
 
-          </ul>
-          <a href="profil-directeur.php?id=" class="btn btn-primary">Profil<span class="sr-only">(current)</span></a>
+
+        <div class="d-flex justify-content-around">
+          <a href="profil-directeur.php?id=<?= $_SESSION['id'] ?>" class="btn btn-primary"><?php echo $bienvenue ?><span class="sr-only">(current)</span></a>
           &nbsp
           <a href="deconnexion.php?id=" class="btn btn-primary">Deconnexion<span class="sr-only">(current)</span></a>
-
-
-
         </div>
+
+
+
 
       </div>
 
@@ -235,12 +223,11 @@ class Viewutilisateur
         <table class="table">
           <thead>
             <tr>
-              <th scope="col">#</th>
+
               <th scope="col">Nom</th>
               <th scope="col">Prénom</th>
-              <th scope="col">Mail</th>
-              <th scope="col">Tel</th>
-              <th scope="col">Actions</th>
+
+              <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -249,11 +236,8 @@ class Viewutilisateur
             foreach ($liste as $utilisateur) {
             ?>
               <tr>
-                <th scope="row"><?= $utilisateur['id'] ?></th>
                 <td><?= $utilisateur['nom'] ?></td>
                 <td><?= $utilisateur['prenom'] ?></td>
-                <td><?= $utilisateur['mail'] ?></td>
-                <td><?= $utilisateur['tel'] ?></td>
                 <td>
                   <a href="voir-utilisateur.php?id=<?= $utilisateur['id'] ?>" class="btn btn-primary">Voir</a>
                 </td>
@@ -280,45 +264,42 @@ class Viewutilisateur
     $utilisateur = new Modelutilisateur();
     $liste = $utilisateur->listeutilisateur();
   ?>
+
     <div class="container">
+
+
       <?php
       if (count($liste) > 0) {
       ?>
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Nom</th>
-              <th scope="col">Prénom</th>
-              <th scope="col">Mail</th>
-              <th scope="col">Tel</th>
-              <th scope="col">Role</th>
-              <th scope="col">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
+        <div class="container">
+          <table class="table"> <a href="ajout-utilisateur.php" class="btn btn-primary">+</a>
 
-            <?php
-            foreach ($liste as $utilisateur) {
-            ?>
+            <thead>
               <tr>
-                <th scope="row"><?= $utilisateur['id'] ?></th>
-                <td><?= $utilisateur['nom'] ?></td>
-                <td><?= $utilisateur['prenom'] ?></td>
-                <td><?= $utilisateur['mail'] ?></td>
-                <td><?= $utilisateur['tel'] ?></td>
-                <td><?= $utilisateur['r0le'] ?></td>
-                <td>
-                  <a href="voir-utilisateuradmin.php?id=<?= $utilisateur['id'] ?>" class="btn btn-primary">Voir</a>
-                  <a href="modif-admin.php?id=<?= $utilisateur['id'] ?>" class="btn btn-info">Modifier</a>
-                  <a href="supp-admin.php?id=<?= $utilisateur['id'] ?>" class="btn btn-danger">Supprimer</a>
-                </td>
+                <th scope="col">Nom</th>
+                <th scope="col">Prénom</th>
+                <th scope="col">Action</th>
+
               </tr>
-            <?php
-            }
-            ?>
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+
+              <?php
+              foreach ($liste as $utilisateur) {
+              ?>
+                <tr>
+                  <td><?= $utilisateur['nom'] ?></td>
+                  <td><?= $utilisateur['prenom'] ?></td>
+                  <td>
+                    <a href="voir-utilisateuradmin.php?id=<?= $utilisateur['id'] ?>" class="btn btn-primary">Voir</a>
+                  </td>
+                </tr>
+              <?php
+              }
+              ?>
+            </tbody>
+          </table>
+        </div>
       <?php
       } else {
       ?>
@@ -331,96 +312,25 @@ class Viewutilisateur
   <?php
   }
 
-  public static function profilutilisateur($id)
-  {
-    $utilisateur = new Modelutilisateur();
-    $user = $utilisateur->profil($id);
-  ?>
-    <div>
-      <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title"><?= $user['id'] . " : " . $user['nom'] . " : " . $user['prenom'];  ?> </h5>
-
-          <p class="card-text">
-            Mail : <a href="mailto:<?= $user['mail'] ?>" target="_blank"><?= $user['mail'] ?></a><br>
-
-          </p>
-          <a href="modif-utilisateur.php?id=<?= $user['id'] ?>" class="btn btn-info">Modifier</a>
-          <a href="supp.php?id=<?= $user['id'] ?>" class="btn btn-danger">Supprimer</a><br /><br />
-          <a href="liste-utilisateurs.php" class="btn btn-primary">
-            < Retour</a>
-        </div>
-      </div>
-    </div>
-  <?php
-  }
-
-  public static function profildirecteur($id)
-  {
-    $utilisateur = new Modelutilisateur();
-    $user = $utilisateur->profil($id);
-  ?>
-    <div>
-      <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title"><?= $user['id'] . " : " . $user['nom'] . " : " . $user['prenom'];  ?> </h5>
-
-          <p class="card-text">
-            Mail : <a href="mailto:<?= $user['mail'] ?>" target="_blank"><?= $user['mail'] ?></a><br>
-
-          </p>
-          <a href="modif-utilisateur.php?id=<?= $user['id'] ?>" class="btn btn-info">Modifier</a>
-          <a href="supp.php?id=<?= $user['id'] ?>" class="btn btn-danger">Supprimer</a><br /><br />
-          <a href="liste-utilisateurs.php" class="btn btn-primary">
-            < Retour</a>
-        </div>
-      </div>
-    </div>
-  <?php
-  }
-
-  public static function profiladmin($id)
-  {
-    $utilisateur = new Modelutilisateur();
-    $user = $utilisateur->profil($id);
-  ?>
-    <div>
-      <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title"><?= $user['id'] . " : " . $user['nom'] . " : " . $user['prenom'];  ?> </h5>
-
-          <p class="card-text">
-            Mail : <a href="mailto:<?= $user['mail'] ?>" target="_blank"><?= $user['mail'] ?></a><br>
-
-          </p>
-          <a href="modif-utilisateur.php?id=<?= $user['id'] ?>" class="btn btn-info">Modifier</a>
-          <a href="supp.php?id=<?= $user['id'] ?>" class="btn btn-danger">Supprimer</a><br /><br />
-          <a href="liste-utilisateursadmin.php" class="btn btn-primary">
-            < Retour</a>
-        </div>
-      </div>
-    </div>
-  <?php
-  }
-
   public static function voirutilisateur($id)
   {
     $utilisateur = new Modelutilisateur();
     $user = $utilisateur->voirutilisateur($id);
   ?>
+
     <div>
+      <a href="liste-utilisateurs.php" class="btn btn-primary">retour</a>
       <div class="card" style="width: 18rem;">
         <div class="card-body">
-          <h5 class="card-title"><?= $user['id'] . " : " . $user['nom'] . " : " . $user['prenom'];  ?> </h5>
+          <h5 class="card-title"><?= $user['id'] . "  " . $user['nom'] . "  " . $user['prenom'];  ?> </h5>
 
           <p class="card-text">
-            Mail : <a href="mailto:<?= $user['mail'] ?>" target="_blank"><?= $user['mail'] ?></a><br>
+            Mail : <a href="mailto:<?= $user['mail'] ?>" target="_blank" class="text-dark"><?= $user['mail'] ?></a><br>
 
           </p>
           <br />
           <br />
-          <a href="liste-utilisateurs.php" class="btn btn-primary">
-            < Retour</a>
+
         </div>
       </div>
     </div>
@@ -432,21 +342,84 @@ class Viewutilisateur
     $utilisateur = new Modelutilisateur();
     $user = $utilisateur->voirutilisateur($id);
   ?>
-    <div>
-      <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title"><?= $user['id'] . " : " . $user['nom'] . " : " . $user['prenom'];  ?> </h5>
 
-          <p class="card-text">
-            Mail : <a href="mailto:<?= $user['mail'] ?>" target="_blank"><?= $user['mail'] ?></a><br>
+    <div>
+      <a href="liste-utilisateursadmin.php" class="btn btn-primary">Retour</a>
+
+      <div class="card" style="width: 18rem;">
+
+        <div class="card-body">
+
+          <h5 class="card-title"><?= $user['id'] . "  " . $user['nom'] . "  " . $user['prenom'];  ?> </h5>
+
+          <p class="card-text ">
+            Mail : <a href="mailto:<?= $user['mail'] ?>" target="_blank" class="text-dark"><?= $user['mail'] ?></a><br>
+
+          </p>
+          <a href="modif-admin.php?id=<?= $user['id'] ?>" class="btn btn-info">Modifier</a>
+          <a href="supp-admin.php?id=<?= $user['id'] ?>" class="btn btn-danger">Supprimer</a>
+          <br />
+          <br />
+
+        </div>
+      </div>
+    </div>
+  <?php
+  }
+
+  public static function profiladmin($id)
+  {
+    $utilisateur = new Modelutilisateur();
+    $user = $utilisateur->voirutilisateur($id);
+  ?>
+
+    <div>
+      <a href="liste-utilisateursadmin.php" class="btn btn-primary">Retour</a>
+
+      <div class="card" style="width: 18rem;">
+
+        <div class="card-body">
+
+          <h5 class="card-title"><?= $user['id'] . "  " . $user['nom'] . "  " . $user['prenom'];  ?> </h5>
+
+          <p class="card-text ">
+            Mail : <a href="mailto:<?= $user['mail'] ?>" target="_blank" class="text-dark"><?= $user['mail'] ?></a><br>
 
           </p>
           <a href="modif-admin.php?id=<?= $user['id'] ?>" class="btn btn-info">Modifier</a>
           <a href="supp.php?id=<?= $user['id'] ?>" class="btn btn-danger">Supprimer</a>
           <br />
           <br />
-          <a href="liste-utilisateursadmin.php" class="btn btn-primary">
-            < Retour</a>
+
+        </div>
+      </div>
+    </div>
+  <?php
+  }
+  public static function profil($id)
+  {
+    $utilisateur = new Modelutilisateur();
+    $user = $utilisateur->voirutilisateur($id);
+  ?>
+
+    <div>
+      <a href="liste-utilisateursadmin.php" class="btn btn-primary">Retour</a>
+
+      <div class="card" style="width: 18rem;">
+
+        <div class="card-body">
+
+          <h5 class="card-title"><?= $user['id'] . "  " . $user['nom'] . "  " . $user['prenom'];  ?> </h5>
+
+          <p class="card-text ">
+            Mail : <a href="mailto:<?= $user['mail'] ?>" target="_blank" class="text-dark"><?= $user['mail'] ?></a><br>
+
+          </p>
+          <a href="modif-utilisateur.php?id=<?= $user['id'] ?>" class="btn btn-info">Modifier</a>
+          <a href="supp.php?id=<?= $user['id'] ?>" class="btn btn-danger">Supprimer</a>
+          <br />
+          <br />
+
         </div>
       </div>
     </div>
@@ -472,7 +445,7 @@ class Viewutilisateur
 
 
         <br />
-        <a href="liste--utilisateursadmin.php" class="btn btn-primary">
+        <a href="liste-utilisateursadmin.php" class="btn btn-primary">
           < Retour</a>
             <br />
             <br />
@@ -523,85 +496,313 @@ class Viewutilisateur
     $utilisateur = new Modelutilisateur();
     $user = $utilisateur->voirutilisateur($id);
   ?>
+    &nbsp<a href="liste-utilisateurs.php" class="btn btn-primary">
+      < Retour</a>
+        <br />
+        <br />
 
-    <form class="col-md-6 offset-md-3" method="post" action="modif-utilisateur.php">
-      <input type="hidden" class="form-control" name="id" id="id" value="<?= $user['id'] ?>">
-      <div class="form-group">
-        <label for="nom"> Nom: </label>
+        <form class="col-md-6 offset-md-3" method="post" action="modif-utilisateur.php">
+          <input type="hidden" class="form-control" name="id" id="id" value="<?= $user['id'] ?>">
+          <div class="form-group">
+            <label for="nom"> Nom: </label>
             <input type="text" class="form-control" name="nom" id="nom" value="<?= $user['nom'] ?>">
-      </div>
-      <div class="form-group">
-        <label for="prenom"> Prenom: </label>
-        <input type="text" class="form-control" name="prenom" id="prenom" value="<?= $user['prenom'] ?>">
-      </div>
-      <div class="form-group">
-        <label for="mail"> Adresse mail: </label>
-        <input type="email" class="form-control" name="mail" id="mail" value="<?= $user['mail'] ?>">
-      </div>
-      <div class="form-group">
-        <label for="pass"> Mot de passe: </label>
-        <input type="password" class="form-control" name="pass" id="pass">
-      </div>
-      <div class="form-group">
-        <label for="tel"> Tel: </label>
-        <input type="text" class="form-control" name="tel" id="tel">
-      </div>
+          </div>
+          <div class="form-group">
+            <label for="prenom"> Prenom: </label>
+            <input type="text" class="form-control" name="prenom" id="prenom" value="<?= $user['prenom'] ?>">
+          </div>
+          <div class="form-group">
+            <label for="mail"> Adresse mail: </label>
+            <input type="email" class="form-control" name="mail" id="mail" value="<?= $user['mail'] ?>">
+          </div>
+          <div class="form-group">
+            <label for="pass"> Mot de passe: </label>
+            <input type="password" class="form-control" name="pass" id="pass" value="<?= $user['pass'] ?>">
+          </div>
+          <div class="form-group">
+            <label for="tel"> Tel: </label>
+            <input type="text" class="form-control" name="tel" id="tel" value="<?= $user['tel'] ?>">
+          </div>
 
-      <button type="submit" class="btn btn-primary" name="modif" id="modif"> Modifier </button>
-      <button type="reset" class="btn btn-danger"> Réinitialiser </button>
-    </form>
-  <?php
-  }
+          <button type="submit" class="btn btn-primary" name="modif" id="modif"> Modifier </button>
+          <button type="reset" class="btn btn-danger"> Réinitialiser </button>
+        </form>
+      <?php
+    }
 
-  
 
-  public static function modifutilisateuradmin($id)
-  {
-    $utilisateur = new Modelutilisateur();
-    $user = $utilisateur->voirutilisateur($id);
-  ?>
 
-    <form class="col-md-6 offset-md-3" method="post" action="modif-admin.php">
-      <input type="hidden" class="form-control" name="id" id="id" value="<?= $user['id'] ?>">
-      <div class="form-group">
-        <label for="nom"> Nom: </label>
-            <input type="text" class="form-control" name="nom" id="nom" value="<?= $user['nom'] ?>">
-      </div>
-      <div class="form-group">
-        <label for="prenom"> Prenom: </label>
-        <input type="text" class="form-control" name="prenom" id="prenom" value="<?= $user['prenom'] ?>">
-      </div>
-      <div class="form-group">
-        <label for="mail"> Adresse mail: </label>
-        <input type="mail" class="form-control" name="mail" id="mail" value="<?= $user['mail'] ?>">
-      </div>
-      <div class="form-group">
-        <label for="pass"> Mot de passe: </label>
-        <input type="pass" class="form-control" name="pass" id="pass">
-      </div>
-      <div class="form-group">
-        <label for="tel"> Tel: </label>
-        <input type="tel" class="form-control" name="tel" id="tel">
-      </div>
-      <div class="form-group">
-        <label for="r0le"> Role: </label>
-        <input type="r0le" class="form-control" name="r0le" id="r0le">
-      </div>
+    public static function modifutilisateuradmin($id)
+    {
+      $utilisateur = new Modelutilisateur();
+      $user = $utilisateur->voirutilisateur($id);
+      ?>
+        &nbsp<a href="liste-utilisateursadmin.php" class="btn btn-primary">
+          < Retour</a>
+            <br />
+            <br />
+            <form class="col-md-6 offset-md-3" method="post" action="modif-admin.php">
+              <input type="hidden" class="form-control" name="id" id="id" value="<?= $user['id'] ?>">
+              <div class="form-group">
+                <label for="nom"> Nom: </label>
+                <input type="text" class="form-control" name="nom" id="nom" value="<?= $user['nom'] ?>">
+              </div>
+              <div class="form-group">
+                <label for="prenom"> Prenom: </label>
+                <input type="text" class="form-control" name="prenom" id="prenom" value="<?= $user['prenom'] ?>">
+              </div>
+              <div class="form-group">
+                <label for="mail"> Adresse mail: </label>
+                <input type="mail" class="form-control" name="mail" id="mail" value="<?= $user['mail'] ?>">
+              </div>
+              <div class="form-group">
+                <label for="pass"> Mot de passe: </label>
+                <input type="pass" class="form-control" name="pass" id="pass" value="<?= $user['pass'] ?>">
+              </div>
+              <div class="form-group">
+                <label for="tel"> Tel: </label>
+                <input type="tel" class="form-control" name="tel" id="tel" value="<?= $user['tel'] ?>">
+              </div>
+              <div class="form-group">
+                <label for="r0le"> Role: </label>
+                <input type="r0le" class="form-control" name="r0le" id="r0le" value="<?= $user['r0le'] ?>">
+              </div>
 
-      <button type="submit" class="btn btn-primary" name="modif" id="modif"> Modifier </button>
-      <button type="reset" class="btn btn-danger"> Réinitialiser </button>
-    </form>
-  <?php
-  }
+              <button type="submit" class="btn btn-primary" name="modif" id="modif"> Modifier </button>
+              <button type="reset" class="btn btn-danger"> Réinitialiser </button>
+            </form>
+          <?php
+        }
 
-  public static function footer()
-  {
-  ?>
-    <div class="bg-dark py-4 mt-5 text-center text-light h3">
-      <div class="container">
-        copyright &copy; <?= date("Y") ?>
-      </div>
-    </div>
-<?php
-  }
-}
+
+
+
+        public static function footer()
+        {
+          ?>
+            <div class="bg-dark py-2 mt-3 text-center text-light fixed-bottom">
+
+              copyright &copy; <?= date("Y") ?>
+
+            </div>
+          <?php
+        }
+
+
+
+        public static function pageadmin()
+        {
+
+          if (date("H") < 18)
+            $bienvenue = "Bonjour " .
+              $_SESSION["prenom"] .
+              " et bienvenue  dans votre espace personnel";
+          else
+            $bienvenue = "Bonsoir " .
+              $_SESSION["prenom"] .
+              " et bienvenue  dans votre espace personnel";
+          ?>
+
+            <body>
+              <div class="container-fluid">
+                <div class="row">
+                  <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light position-fixed collapse">
+                    <div class="position-sticky pt-3 sidebar-sticky">
+                      <ul class="nav flex-column">
+                        <li class="nav-item">
+                          <a class="nav-link text-dark active" aria-current="page" href="#" data-source="tab-bord">
+                            Tableau de bord </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link text-dark" href="liste-utilisateursadmin.php">
+                            Liste des Utilisateurs
+                          </a>
+
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link text-dark" href="ajout-utilisateur.php">
+                            Ajout d'utilisateur
+                          </a>
+
+                        </li>
+                      </ul>
+                    </div>
+                  </nav>
+
+                  <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 text-center">
+                    <section class="contenu" data-cible="tab-bord">
+                      <div class="py-4 "><?php echo $bienvenue ?></div>
+
+                    </section>
+                  </main>
+                </div>
+              </div>
+
+
+
+            </body>
+
+
+          <?php
+        }
+
+        public static function pageutilisateur()
+        {
+
+          if (date("H") < 18)
+            $bienvenue = "Bonjour " .
+              $_SESSION["prenom"] .
+              " et bienvenue  dans votre espace personnel";
+          else
+            $bienvenue = "Bonsoir " .
+              $_SESSION["prenom"] .
+              " et bienvenue  dans votre espace personnel";
+          ?>
+
+            <body>
+              <div class="container-fluid">
+                <div class="row">
+                  <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light position-fixed collapse">
+                    <div class="position-sticky pt-3 sidebar-sticky">
+                      <ul class="nav flex-column">
+                        <li class="nav-item">
+                          <a class="nav-link text-dark active" aria-current="page" href="#" data-source="tab-bord">
+                            Tableau de bord </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link text-dark" href="liste-utilisateurs.php">
+                            Liste des Utilisateurs
+                          </a>
+
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link text-dark" href="liste-depot.php">
+                            Liste des depots
+                          </a>
+
+                        </li>
+                      </ul>
+                    </div>
+                  </nav>
+
+                  <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 text-center">
+                    <section class="contenu" data-cible="tab-bord">
+                      <div class="py-4 "><?php echo $bienvenue ?></div>
+
+                    </section>
+                  </main>
+                </div>
+              </div>
+
+
+
+            </body>
+
+
+          <?php
+        }
+
+        public static function pagedirecteur()
+        {
+
+          if (date("H") < 18)
+            $bienvenue = "Bonjour " .
+              $_SESSION["prenom"] .
+              " et bienvenue  dans votre espace personnel";
+          else
+            $bienvenue = "Bonsoir " .
+              $_SESSION["prenom"] .
+              " et bienvenue  dans votre espace personnel";
+          ?>
+
+            <body>
+              <div class="container-fluid">
+                <div class="row">
+                  <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light position-fixed collapse">
+                    <div class="position-sticky pt-3 sidebar-sticky">
+                      <ul class="nav flex-column">
+                        <li class="nav-item">
+                          <a class="nav-link text-dark active" aria-current="page" href="#" data-source="tab-bord">
+                            Tableau de bord </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link text-dark" href="ajout-depot.php">
+                            Ajout de dépot
+                          </a>
+
+                        </li>
+                        <li class="nav-item">
+
+                          <a class="nav-link text-dark" href="liste-depots.php">
+                            Liste des dépots
+                          </a>
+
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link text-dark" href="ajout-produit.php">
+                            Ajout de produit
+                          </a>
+
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link text-dark" href="liste-produit.php">
+                            Liste des produits
+                          </a>
+
+                        </li>
+                      </ul>
+                    </div>
+                  </nav>
+
+                  <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 text-center">
+                    <section class="contenu" data-cible="tab-bord">
+                      <div class="py-4 "><?php echo $bienvenue ?></div>
+
+                    </section>
+                  </main>
+                </div>
+              </div>
+
+
+
+            </body>
+
+
+          <?php
+        }
+
+        public static function pageacceuil()
+        {
+
+          if (date("H") < 18)
+            $bienvenue = "Bonjour et bienvenue,<br/> connectez vous pour continuer";
+          else
+            $bienvenue = "Bonsoir et bienvenue,<br/> connectez vous pour continuer";
+          ?>
+
+            <body>
+              <div class="container-fluid">
+                <div class="row">
+
+
+                  <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 text-center">
+                    <section class="contenu" data-cible="tab-bord">
+
+                      <div class="position-sticky pt-3 sidebar-sticky h2">
+                        <div class="py-4 "><?php echo $bienvenue ?></div>
+                      </div>
+
+
+                    </section>
+                  </main>
+                </div>
+              </div>
+
+
+
+            </body>
+
+
+        <?php
+        }
+      }

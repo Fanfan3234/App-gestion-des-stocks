@@ -16,8 +16,8 @@
     
     
 
-    Viewutilisateur::menuutilisateur();
-    Viewutilisateur::profildirecteur($_GET['id']);
+    Viewutilisateur::menudirecteur();
+    Viewutilisateur::profil($_GET['id']);
     Viewutilisateur::footer();
 
 

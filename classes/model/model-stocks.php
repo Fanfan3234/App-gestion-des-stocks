@@ -220,3 +220,352 @@ class Modelutilisateur
     return $this;
   }
 }
+
+
+class Modelproduit
+{
+  private $id;
+  private $nom;
+  private $type;
+  private $photo;
+  private $description;
+
+  public function __construct(
+    $id = null,
+    $nom = null,
+    $type = null,
+    $photo = null,
+    $description = null
+  ) {
+    $this->id = $id;
+    $this->nom = $nom;
+    $this->type = $type;
+    $this->photo = $photo;
+    $this->description = $description;
+  }
+
+  public function listeproduits()
+  {
+    $idcon = connexion();
+    $requete = $idcon->prepare("
+      SELECT * FROM pdt
+    ");
+    $requete->execute();
+    return $requete->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+
+
+  public function ajoututilisateur($nom, $type, $photo,  $description)
+  {
+    $idcon = connexion();
+    $requete = $idcon->prepare("INSERT INTO pdt VALUES ( null, :nom, :prenom, :mail, :tel, :pass, :r0le)");
+
+
+    return $requete->execute([
+      ':nom' => $nom,
+      ':type' => $type,
+      ':photo' => $photo,
+      ':description' => $description,
+
+    ]);
+  }
+
+
+  public function voirproduit($id)
+  {
+    $idcon = connexion();
+    $requete = $idcon->prepare("
+      SELECT * FROM pdt where id=:id;
+    ");
+    $requete->execute([
+      ':id' => $id,
+    ]);
+    return $requete->fetch(PDO::FETCH_ASSOC);
+  }
+
+
+
+  public function suppproduit($id)
+  {
+    $idcon = connexion();
+    $requete = $idcon->prepare("
+      DELETE  FROM pdt where id= :id;
+    ");
+    return $requete->execute([
+      ':id' => $id,
+    ]);
+  }
+
+
+
+  public function modifproduit($id, $nom, $type, $photo, $description)
+  {
+    $idcon = connexion();
+    $requet = $idcon->prepare("
+      UPDATE pdt SET nom = :nom, type = :type, photo = :photo, description = :description,  WHERE id = :id
+    ");
+    return $requet->execute([
+      ':id' => $id,
+      ':nom' => $nom,
+      ':type' => $type,
+      ':photo' => $photo,
+      ':description' => $description,
+
+
+
+    ]);
+  }
+
+  /*
+  
+  GETTERS ET SETTERS
+
+  */
+
+  public function getId()
+  {
+    return $this->id;
+  }
+
+  public function getNom()
+  {
+    return $this->nom;
+  }
+
+  public function getType()
+  {
+    return $this->type;
+  }
+
+  public function getPhoto()
+  {
+    return $this->photo;
+  }
+
+  public function getDescription()
+  {
+    return $this->description;
+  }
+
+
+  public function setId($id)
+  {
+    $this->id = $id;
+    return $this;
+  }
+
+  public function setNom($nom)
+  {
+    $this->nom = $nom;
+    return $this;
+  }
+
+  public function setType($type)
+  {
+    $this->type = $type;
+    return $this;
+  }
+
+  public function setPhoto($photo)
+  {
+    $this->photo = $photo;
+    return $this;
+  }
+
+  public function setDescription($description)
+  {
+    $this->description = $description;
+    return $this;
+  }
+}
+
+class Modeldepot
+{
+  private $id;
+  private $nom;
+  private $ville;
+  private $code_post;
+  private $longit;
+  private $lat;
+  private $directeur;
+
+
+  public function __construct(
+    $id = null,
+    $nom = null,
+    $ville = null,
+    $code_post = null,
+    $longit = null,
+    $lat = null,
+    $directeur = null
+  ) {
+    $this->id = $id;
+    $this->nom = $nom;
+    $this->ville = $ville;
+    $this->code_post = $code_post;
+    $this->longit = $longit;
+    $this->lat = $lat;
+    $this->directeur = $directeur;
+  }
+
+  public function listedepot()
+  {
+    $idcon = connexion();
+    $requete = $idcon->prepare("
+      SELECT * FROM depot
+    ");
+    $requete->execute();
+    return $requete->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+
+
+  public function ajoutdepot($nom, $ville, $code_post,  $longit, $lat, $directeur)
+  {
+    $idcon = connexion();
+    $requete = $idcon->prepare("INSERT INTO depot VALUES ( null, :nom, :ville, :code_post, :longit, :lat, :directeur)");
+
+
+    return $requete->execute([
+      ':nom' => $nom,
+      ':ville' => $ville,
+      ':code_post' => $code_post,
+      ':longit' => $longit,
+      ':lat' => $lat,
+      ':directeur' => $directeur,
+    ]);
+  }
+
+
+  public function voirdepot($id)
+  {
+    $idcon = connexion();
+    $requete = $idcon->prepare("
+      SELECT * FROM depot where id=:id;
+    ");
+    $requete->execute([
+      ':id' => $id,
+    ]);
+    return $requete->fetch(PDO::FETCH_ASSOC);
+  }
+
+
+
+  public function suppdepot($id)
+  {
+    $idcon = connexion();
+    $requete = $idcon->prepare("
+      DELETE  FROM depot where id= :id;
+    ");
+    return $requete->execute([
+      ':id' => $id,
+    ]);
+  }
+
+
+
+  public function modifdepot($id, $nom, $ville, $code_post,  $longit, $lat, $directeur)
+  {
+    $idcon = connexion();
+    $requet = $idcon->prepare("
+      UPDATE depot SET nom = :nom, ville = :ville, code_post = :code_post, longit = :longit, lat = :lat, directeur = :directeur,  WHERE id = :id
+    ");
+    return $requet->execute([
+      ':id' => $id,
+      ':nom' => $nom,
+      ':ville' => $ville,
+      ':code_post' => $code_post,
+      ':longit' => $longit,
+      ':lat' => $lat,
+      ':directeur' => $directeur,
+
+
+    ]);
+  }
+
+
+  /*
+  
+  GETTERS ET SETTERS
+
+  */
+
+  public function getId()
+  {
+    return $this->id;
+  }
+
+  public function getNom()
+  {
+    return $this->nom;
+  }
+
+  public function getVille()
+  {
+    return $this->ville;
+  }
+
+  public function getCode_post()
+  {
+    return $this->code_post;
+  }
+
+  public function getLongit()
+  {
+    return $this->longit;
+  }
+
+  public function getLat()
+  {
+    return $this->lat;
+  }
+
+
+  public function getDirecteur()
+  {
+    return $this->directeur;
+  }
+
+  public function setId($id)
+  {
+    $this->id = $id;
+    return $this;
+  }
+
+  public function setNom($nom)
+  {
+    $this->nom = $nom;
+    return $this;
+  }
+
+  public function setVille($ville)
+  {
+    $this->ville = $ville;
+    return $this;
+  }
+
+  public function setCode_post($code_post)
+  {
+    $this->code_post = $code_post;
+    return $this;
+  }
+
+  public function setLongit($longit)
+  {
+    $this->longit = $longit;
+    return $this;
+  }
+
+  public function setLat($lat)
+  {
+    $this->lat = $lat;
+    return $this;
+  }
+
+  public function setDescription($description)
+  {
+    $this->description = $description;
+    return $this;
+  }
+}
